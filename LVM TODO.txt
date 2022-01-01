@@ -1,0 +1,23 @@
+				C	H
+ArgParser		X	X
+Bytecodes		X	X
+ByteReader		X	X
+ClassLoader		X	X
+Comp			X	X
+Error			X	X
+lvm				X	✓
+Runtime			X	X
+Startup			X	X			
+Types			X	X			
+main			X	-
+LNI				X	X
+
+✓		Fertig + Kommentiert
+X		Fertig
+~		In Bearbeitung
+-		Gibts nicht
+		Nix getan
+
+Features:
+	Multithreading
+	STDLIB

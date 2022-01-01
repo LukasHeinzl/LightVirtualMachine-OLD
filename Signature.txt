@@ -1,0 +1,27 @@
+Method:
+	ReturnType(Params)Name
+
+Field:
+	Type:Name:Class
+	
+Types:
+	B  boolean
+	C  char
+	F  float
+	D  double
+	S  string
+	V  void
+	[  array
+	U  universal array
+	R; reference
+	M  method reference
+	G  generic type
+	P  pointer
+	1  singed 1B
+	2  signed 2B
+	4  signed 4B
+	8  signed 8B
+	3  unsigned 1B
+	5  unsigned 2B
+	6  unsigned 4B
+	7  unsigned 8B

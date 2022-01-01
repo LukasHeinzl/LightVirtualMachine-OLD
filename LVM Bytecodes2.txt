@@ -1,0 +1,57 @@
+nop						no operation											0:
+move					R[RI1] = R[RI2]											2: RI1, RI2
+swap					x = R[RI1], R[RI1] = R[RI2], R[RI2] = x					2: RI1, RI2
+store					mem[RT[RTI]] = R[RI]									2: RI, RTI
+storeoffset				mem[R[RI1] + R[RI2]] = R[RI3]							3: RI1, RI2, RTI
+load					R[RI] = mem[RT[RTI]]									2: RI, RTI
+loadconstant			R[RI] = RT[RTI]											2: RI, RTI
+loadmethod				R[RI] = RT[RTI1].RT[RTI2]								3: RI, RTI1, RTI2
+loadvirtual				R[RI1] = R[RI2].RT[RTI1] OR RT[RTI2].RT[RTI1]			4: RI1, RI2, RTI1, RTI2
+loadexception			R[RI] = ER[], ER[] = 0									1: RI
+loadoffset				R[RI1] = mem[R[RI2] + R[RI3]]							3: RI1, RI2, RI3
+loadm1					R[RI] = -1												1: RI
+load0					R[RI] = 0												1: RI
+load1					R[RI] = 1												1: RI
+load2					R[RI] = 2												1: RI
+load5					R[RI] = 5												1: RI
+add						R[RI1] = R[RI2] + R[RI3]								3: RI1, RI2, RI3
+addf					R[RI1] = (float) R[RI2] + R[RI3]						3: RI1, RI2, RI3
+sub						R[RI1] = R[RI2] - R[RI3]								3: RI1, RI2, RI3
+subf					R[RI1] = (float) R[RI2] - R[RI3]						3: RI1, RI2, RI3
+mul						R[RI1] = R[RI2] * R[RI3]								3: RI1, RI2, RI3
+mulf					R[RI1] = (float) R[RI2] * R[RI3]						3: RI1, RI2, RI3
+div						R[RI1] = R[RI2] / R[RI3]								3: RI1, RI2, RI3
+divf					R[RI1] = (float) R[RI2] / R[RI3]						3: RI1, RI2, RI3
+rem						R[RI1] = R[RI2] % R[RI3]								3: RI1, RI2, RI3
+neg						R[RI1] = -R[RI2]										2: RI1, RI2
+inc						R[RI]++													1: RI
+incf					R[RI]++ (float)											1: RI
+dec						R[RI]--													1: RI
+decf					R[RI]-- (float)											1: RI
+lshift					R[RI1] = R[RI2] << R[RI3]								3: RI1, RI2, RI3
+rshift					R[RI1] = R[RI2] >> R[RI3]								3: RI1, RI2, RI3
+or						R[RI1] = R[RI2] | R[RI3]								3: RI1, RI2, RI3
+xor						R[RI1] = R[RI2] ^ R[RI3]								3: RI1, RI2, RI3
+and						R[RI1] = R[RI2] & R[RI3]								3: RI1, RI2, RI3
+not						R[RI1] = ~R[RI2]										2: RI1, RI2
+return					return													0:
+returnval				return R[RI]											1: RI
+call					R[RI1] = R[RI2](R[RI3] .. R[RI3 + n])					3: RI1, RI2, RI3
+callvoid				R[RI1](R[RI2] .. R[RI2 + n])							2: RI1, RI2
+new						R[RI] = new RT[RTI]										2: RI, RTI
+newarray				R[RI1] = new RT[RTI], size: R[RI2]						3: RI1, RI2, RTI
+delete					delete R[RI]											1: RI
+length					R[RI].length											1: RI
+strcat					R[RI1] = R[RI2] + R[RI3] (string)						3: RI1, RI2, RI3
+instanceof				R[RI1] = R[RI2] instanceof RT[RTI]						3: RI1, RI2, RTI
+throw					ER[] = R[RI]											1: RI
+checkcast				throw CastException if R[RI] not castable to RT[RTI]	1: RI, RTI
+i2f						R[RI1] = (float) R[RI2]									2: RI1, RI2
+f2i						R[RI1] = (int) R[RI2]									2: RI1, RI2
+less					R[RI1] = R[RI2] < R[RI3]								3: RI1, RI2, RI3
+lessf					R[RI1] = (float) R[RI2] < R[RI3]						3: RI1, RI2, RI3
+lessequal				R[RI1] = R[RI2] <= R[RI3]								3: RI1, RI2, RI3
+lessequalf				R[RI1] = (float) R[RI2] <= R[RI3]						3: RI1, RI2, RI3
+equal					R[RI1] = R[RI2] == R[RI3]								3: RI1, RI2, RI3
+if						if(!R[RI]) goto POS										2: RI, POS (2B)
+goto					goto POS												1: POS (2B)

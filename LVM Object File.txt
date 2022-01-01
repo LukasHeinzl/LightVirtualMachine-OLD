@@ -1,0 +1,89 @@
+1B					Major Version
+1B					Minor Version
+
+1B					classID
+2B					bitmask*
+
+2B					instanceVariableCount
+?B					instanceVariableTable**
+
+2B					classVariableCount
+?B					classVariableTable**
+
+1B					interfaceCount
+?B					interfaceTable***
+
+2B					referenceCount
+?B					referenceTable****
+
+2B					methodCount
+?B					methodTable°
+
+-----------------------------------------------
+* The bitmask can be constructed as follows:
+	0x0001 - static
+	0x0002 - final
+	0x0004 - native
+	0x0008 - private
+	0x0010 - interface
+	0x0020 - enum
+	0x0040 - nosuper
+	0x0080 - nocheck
+	0x0100 - synchronized
+	0x0200 - virtual
+	0x0400 - volatile
+	0x0800 - throws
+	0x1000 - protected
+
+** A VariableEntry consists of the following byte-structure:
+	2B - descriptor from ReferenceTable
+	2B - bitmask
+	1B - type°°
+
+*** An InterfaceEntry consists of the following byte-structure:
+	2B - descriptor from ReferenceTable
+
+**** A ReferenceEntry consists of the following byte-structure:
+	1B - type°°
+	2B - amount of additional bytes
+	?B - additional bytes
+
+° A MethodEntry consists of the following byte-structure:
+	2B - descriptor from ReferenceTable
+	1B - registerCount
+	1B - paramCount
+	2B - bitmask*
+	2B - lineTableLength
+	?B - lineTable°°°
+	1B - exceptionTableLength
+	?B - exceptionTable°°°°
+	2B - bytecodeLength
+	?B - bytecodes
+
+°° The following types are possible:
+	00 - unsigned 1 byte
+	01 - unsigned 2 bytes
+	02 - unsigned 4 bytes
+	03 - unsigned 8 bytes
+	04 - signed 1 byte
+	05 - signed 2 bytes
+	06 - signed 4 bytes
+	07 - signed 8 bytes
+	08 - float
+	09 - double
+	10 - string
+	11 - char
+	12 - boolean
+	13 - class descriptor
+	14 - method descriptor
+	15 - field descriptor
+
+°°° A LineTableEntry consists of the follwoing byte-structure:
+	2B - bytecodeOffset
+	2B - lineNumber
+
+°°°° A ExceptionTableEntry consists of the follwoing byte-sturcure:
+	2B - startBCOffset
+	2B - endBCOffset
+	2B - exceptionBCOffset
+	2B - referenceTableEntry
